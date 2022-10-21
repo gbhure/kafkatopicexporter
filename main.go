@@ -278,7 +278,7 @@ func init() {
 func loadConfigFile() Config {
 	m := Config{}
 	// this file path is configmap mounted in pod yaml
-	yamlFile, err := ioutil.ReadFile("/etc/config/conf.yaml")
+	yamlFile, err := ioutil.ReadFile("/opt/project1/config/conf.yaml")
 	if err != nil {
 		log.Printf("yamlFile.Get err: %v ", err)
 	}
@@ -295,11 +295,12 @@ func main() {
 
 	// logger setup
 	logger.Setup(conf.Logger.Host, strings.ToUpper(conf.Logger.LogLevel))
-	logger.Info("Connecting to broker: [%s]", conf.Broker.Host)
+	logger.Info("Connecting to the broker named: [%s]", conf.Broker.Host)
 	utils.OnuSNhex = conf.Conv.Onusnhex
 	logger.Info("The utils.OnuSNhex : [%t]", utils.OnuSNhex)
 	logger.Info("The conf.Conv.Onusnformat is : [%t]", conf.Conv.Onusnhex)
 
 	go kafkaInit(conf.Broker)
+	logger.Info("Run server")
 	runServer(conf.Target)
 }

@@ -11,6 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+// Copyright -- year 2022
 
 package main
 
@@ -18,13 +19,14 @@ import (
 	"encoding/json"
 	"strconv"
 	"strings"
+	"encoding/yaml"
 
 	"gerrit.opencord.org/kafka-topic-exporter/common/logger"
 	"gerrit.opencord.org/kafka-topic-exporter/utils"
 	"github.com/golang/protobuf/proto"
 	"github.com/opencord/device-management-interface/go/dmi"
 	"github.com/opencord/voltha-protos/v5/go/voltha"
-	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_python/prometheus"
 	log "github.com/sirupsen/logrus"
 )
 
